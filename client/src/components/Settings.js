@@ -63,6 +63,7 @@ class Settings extends Component {
         super(props)
 
         this.onSubmit = this.onSubmit.bind(this);
+        this.locationFieldChange = this.locationFieldChange.bind(this)
         this.getGeocode = this.getGeocode.bind(this);
         this.getWhether = this.getWhether.bind(this);
         this.enterLocation = this.enterLocation.bind(this);
@@ -87,6 +88,7 @@ class Settings extends Component {
         this.saveSettings = this.saveSettings.bind(this)
         
         this.state = {
+            locationField: '',
             msg: ''
         }
     }
@@ -249,7 +251,7 @@ class Settings extends Component {
         if (!this.props.user.settings.location.location) {
             return <div>Please enter location to unlock settings</div>
         } else {
-            return;
+            return <div>Location set to: {this.props.settings.location.locationF}</div>
         }
     }
 
@@ -269,7 +271,10 @@ class Settings extends Component {
                             this.getWhether(this.props.settings.location);
                         }, 18000000)
                     // }
-                    return store.dispatch(actions.locationUpdate(data.results[0].geometry.location.lat + "," + data.results[0].geometry.location.lng))
+                    return store.dispatch(actions.locationUpdate(
+                        data.results[0].geometry.location.lat + "," + data.results[0].geometry.location.lng,
+                        data.results[0].formatted_address
+                    ))
                 }
             })
             .then(() => {
@@ -290,10 +295,14 @@ class Settings extends Component {
             .catch(error => console.log(error));
     }
 
+    locationFieldChange(e) {
+        this.setState({ locationField: e.target.value})
+    }
+
     onSubmit(e) {
         e.preventDefault();
         clearInterval(this.settingsMomentId);
-        const location = this.location.value;
+        const location = this.state.locationField;
 
         this.getGeocode(location);
     }
@@ -304,7 +313,7 @@ class Settings extends Component {
                 <form className="submitlocation" onSubmit={this.onSubmit}>
                     <label htmlFor="enterlocation">Location </label>
                     <input id="enterlocation" type="text" name="location"
-                        ref={ref => this.location = ref} /><br />
+                        onChange={this.locationFieldChange} value={this.state.locationField} /><br />
                     {!this.props.settings.validLocation ? <span>Please enter a valid location</span> : <span></span>}
                     {!this.props.settings.validLocation ? <br /> : null}
                     <button className="enter-location-button" type="submit" value="Submit">Change Location</button>

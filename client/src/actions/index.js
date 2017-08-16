@@ -49,9 +49,10 @@ export const gettingWhether = bool => ({
 })
 
 export const LOCATION_UPDATE = "LOCATION_UPDATE";
-export const locationUpdate = location => ({
+export const locationUpdate = (location, locationformatted) => ({
     type: LOCATION_UPDATE,
-    location
+    location,
+    locationformatted
 })
 
 export const LOCATION_ISVALID = "LOCATION_ISVALID";

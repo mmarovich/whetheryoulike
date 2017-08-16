@@ -50,6 +50,7 @@ const initialState = {
         location: {
             isInputChecked: false,
             location: false,
+            locationF: false,
             saved_isInputChecked: false,
             saved_location: false
         },
@@ -178,7 +179,8 @@ export const userReducer = (state = initialState, action) => {
                     ...state.settings,
                     location: {
                         ...state.settings.location,
-                        location: action.location
+                        location: action.location,
+                        locationF: action.locationformatted
                     }
                 }
             }

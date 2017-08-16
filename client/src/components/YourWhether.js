@@ -79,9 +79,9 @@ class YourWhether extends Component {
 
     displayWhether() {
         if (!this.props.observation) {
-            if (this.props.settings.location.isInputChecked || this.props.settings.weather.isInputChecked || this.props.settings.temperature.isInputChecked || this.props.settings.visual.isInputChecked || this.props.settings.webcam.isInputChecked) {
+            // if (this.props.settings.location.isInputChecked || this.props.settings.weather.isInputChecked || this.props.settings.temperature.isInputChecked || this.props.settings.visual.isInputChecked || this.props.settings.webcam.isInputChecked) {
                 return <div className="no-location">You don't appear to have a location yet.</div>
-            }
+            // }
         } else {
             return null;
         }

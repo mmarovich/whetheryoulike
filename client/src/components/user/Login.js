@@ -23,8 +23,7 @@ class Login extends Component {
     }
 
     logIn(email, password) {
-        console.log(email, password)
-        return fetch('https://rocky-escarpment-61736.herokuapp.com/api/login', {
+        return fetch('/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,6 +34,7 @@ class Login extends Component {
             })
         })
             .then(response => {
+                console.log(response)
                 if (response.status === 401 || response.status === 500) {
                     this.setState({ msg: 'Invalid Username or password'})
                 }

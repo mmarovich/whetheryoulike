@@ -16,6 +16,7 @@
 .no-location {
     padding-top: 50px;
     text-align: center;
+    color: red;
 }
 
 .save-positions {
