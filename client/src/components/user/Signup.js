@@ -43,7 +43,7 @@ class SignUp extends Component {
             })
             .then(data => {
                 if (!data.msg) {
-                    this.props.history.push('/email-verification')
+                    this.props.history.push('/login')
                 } else {
                     return;
                 }
