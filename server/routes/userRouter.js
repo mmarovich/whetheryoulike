@@ -82,10 +82,10 @@ module.exports = function (app, passport, nev) {
     app.post('/api/signup', (req, res, next) => {
         User.findOne({ email: req.body.email }, (err, user) => {
             if (err) {
-                res.send(err)
+                return res.send(err)
             }
             if (user) {
-                res.send({ msg: 'User already exists' })
+                return res.send({ msg: 'User already exists' })
             }
             if (!user) {
                 let newUser = new User()
@@ -109,13 +109,13 @@ module.exports = function (app, passport, nev) {
     app.post('/api/login', (req, res, next) => {
         User.findOne({email: req.body.email}, (err, user) => {
             if (err) {
-                res.send(err)
+                return res.send(err)
             }
             if (!user) {
-                res.send({msg: 'user not found'})
+                return res.sendStatus(404)
             }
             if (!user.validPassword(req.body.password)) {
-                res.send('Incorrect username/password')
+                return res.sendStatus(403)
             }
 
             res.status(201).json(user)

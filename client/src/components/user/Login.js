@@ -35,24 +35,25 @@ class Login extends Component {
         })
             .then(response => {
                 console.log(response)
-                if (response.status > 400) {
-                    this.setState({ msg: 'Invalid Username or password'})
-                }
-                return response.json()
-            })
-            .then(user => {
-                if (user.settings === undefined) {
-                    store.dispatch(actions.logIn(user.email, user.status))
-                    store.dispatch(actions.initialSettings())
+                if (response.status == 403 || response.status == 404) {
+                    this.setState({ msg: 'Invalid Username or password' })
                     return;
                 } else {
-                    store.dispatch(actions.logIn(user.email, user.status))
-                    store.dispatch(actions.loadSettings(user.settings))
-                    return;
+                    return response.json()
                 }
-            })
-            .then(data => {
-                this.props.history.push('/settings')
+            }, (err) => console.log(err))
+            .then(response => {
+                if (response) {
+                    if (response && response.settings === undefined) {
+                        store.dispatch(actions.logIn(response.email))
+                        store.dispatch(actions.initialSettings())
+                        return this.props.history.push('/settings');
+                    } else {
+                        store.dispatch(actions.logIn(response.email))
+                        store.dispatch(actions.loadSettings(response.settings))
+                        return this.props.history.push('/settings');
+                    }
+                }
             })
             .catch(error => console.log(error));
 
@@ -91,7 +92,7 @@ class Login extends Component {
                         <div className="message">{this.state.msg}</div>
                         <button className="login-button" type="Submit" value="Submit">Submit</button>
                     </form>
-                    
+
                     <p>Need an account? <Link to="/signup">Sign Up</Link></p>
                     <p><Link to="/about">About WhetherYouLike</Link></p>
                 </div>

@@ -7,10 +7,9 @@ export const signUp = (email, status) => ({
 })
 
 export const LOGIN = "LOGIN";
-export const logIn = (email, status, settings) => ({
+export const logIn = email => ({
     type: LOGIN,
     email,
-    status
 })
 
 export const UPDATE_STATE = "UPDATE_STATE";

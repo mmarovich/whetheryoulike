@@ -17,6 +17,7 @@ else {
     // Proxy everything through to Create React App
     app.use(proxy('http://localhost:3000/', {
         logLevel: 'warn', // Keep the logs clean
+        proxyTimeout: 5000,
         ws: true, // Proxy websockets too
         router: {
             // Anything to /api goes to our backend

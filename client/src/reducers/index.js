@@ -151,7 +151,6 @@ export const userReducer = (state = initialState, action) => {
                 ...state,
                 isLoggedIn: true,
                 email: action.email,
-                status: action.status,
             }
         case actions.UPDATE_STATE:
             return {
