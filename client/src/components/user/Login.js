@@ -34,7 +34,6 @@ class Login extends Component {
             })
         })
             .then(response => {
-                console.log(response)
                 if (response.status == 403 || response.status == 404) {
                     this.setState({ msg: 'Invalid Username or password' })
                     return;

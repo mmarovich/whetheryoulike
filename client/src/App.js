@@ -35,7 +35,7 @@ class App extends Component {
   render() {
     return (
       <div className="App-container">
-        <div className="mobile-only">Unfortunately, this app is only for mobile devices. Please press shift+ctrl+i to go into developer mode and enter mobile view.</div>
+        <div className="mobile-only">Unfortunately, this app is only for mobile devices. Please press shift+ctrl+i (windows) or option+command+i (mac) to go into developer mode and enter mobile view. You can also resize the window to mock a smartphone.</div>
         <div className="App">
           {this.showSidebar()}
           <ConnectedSwitch>

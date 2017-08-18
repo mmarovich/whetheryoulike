@@ -89,7 +89,6 @@ module.exports = function (app, passport, nev) {
             }
             if (!user) {
                 let newUser = new User()
-                console.log(req.body)
                 newUser.email = req.body.email
                 newUser.password = newUser.generateHash(req.body.password)
 
