@@ -23,6 +23,10 @@
     margin: 5px 0 5px 0;
 }
 
+#enterlocation {
+    border: 1px solid black;
+}
+
 .enter-location-button {
     border-radius: 28px;
     font-family: Arial;
