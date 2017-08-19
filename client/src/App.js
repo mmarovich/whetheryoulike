@@ -11,7 +11,7 @@ import Nav from './components/Nav';
 import YourWhether from './components/YourWhether';
 import Home from './components/Home';
 import WebcamList from './components/WebcamList';
-import './App.css';
+import './styles/App.css';
 
 const ConnectedSwitch = connect(state => ({
   location: state.router.location
@@ -35,7 +35,7 @@ class App extends Component {
   render() {
     return (
       <div className="App-container">
-        <div className="mobile-only">Unfortunately, this app is only for mobile devices. Please press shift+ctrl+i (windows) or option+command+i (mac) to go into developer mode and enter mobile view. You can also resize the window to mock a smartphone.</div>
+        <div className="mobile-only">Unfortunately, this app is only for mobile devices. Please press shift+ctrl+i (windows) or option+command+i (mac) to go into developer mode and enter mobile view. You can also go to this address on your smartphone, or just resize the window to mock a smartphone.</div>
         <div className="App">
           {this.showSidebar()}
           <ConnectedSwitch>

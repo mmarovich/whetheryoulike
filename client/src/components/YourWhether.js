@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import './YourWhether.css';
+import '../styles/YourWhether.css';
 import store from '../store';
 import * as actions from '../actions/index';
 import Time from './Time';

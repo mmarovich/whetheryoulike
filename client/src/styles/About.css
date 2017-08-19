@@ -1,6 +1,10 @@
 .about-container {
     padding: 30px 20px;
-    text-align: center;
+    text-align: left;
+}
+
+.about-container > div {
+    padding: 15px;
 }
 
 .go-back {

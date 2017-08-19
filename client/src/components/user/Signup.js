@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import './Signup.css';
+import '../../styles/Signup.css';
 
 class SignUp extends Component {
     constructor(props) {

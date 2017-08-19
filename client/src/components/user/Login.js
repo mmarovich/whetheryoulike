@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import './Login.css';
+import '../../styles/Login.css';
 import store from '../../store';
 import * as actions from '../../actions/index';
 

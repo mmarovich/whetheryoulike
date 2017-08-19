@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import './Hour.css';
+import '../styles/Hour.css';
 import store from '../store';
 import * as actions from '../actions/index';
 

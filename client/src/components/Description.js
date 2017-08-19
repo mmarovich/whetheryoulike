@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Draggable from 'react-draggable';
 
-import './Description.css';
+import '../styles/Description.css';
 import store from '../store';
 import * as actions from '../actions/index';
 

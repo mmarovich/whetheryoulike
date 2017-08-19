@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Draggable from 'react-draggable';
 
-import './Temperature.css';
+import '../styles/Temperature.css';
 import store from '../store';
 import * as actions from '../actions/index';
 

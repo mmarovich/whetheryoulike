@@ -3,7 +3,7 @@
     height: 100vh;
     padding-top: 13%;
     text-align: center;
-    background: url('../../assets/storm.jpeg') no-repeat;
+    background: url('../assets/storm.jpeg') no-repeat;
     background-size: 150% 100%;
     background-position: right top;
 }

@@ -5,7 +5,7 @@ import {Menu, MenuItem} from 'material-ui/Menu';
 import TiThMenu from 'react-icons/lib/ti/th-menu'
 
 
-import './Nav.css';
+import '../styles/Nav.css';
 
 class Nav extends Component {
     constructor(props) {

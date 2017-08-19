@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Draggable from 'react-draggable';
 
-import './Date.css';
+import '../styles/Date.css';
 import store from '../store';
 import * as actions from '../actions/index';
 

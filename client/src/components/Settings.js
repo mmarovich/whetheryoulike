@@ -6,7 +6,7 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 
 import store from '../store';
 import * as actions from '../actions/index';
-import './Settings.css';
+import '../styles/Settings.css';
 
 const styles = {
     icon: {

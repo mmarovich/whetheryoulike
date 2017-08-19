@@ -8,7 +8,7 @@ import { TiWeatherDownpour as Rain } from 'react-icons/lib/ti';
 import { TiWeatherNight as Night } from 'react-icons/lib/ti';
 import { MdCloud as Cloud } from 'react-icons/lib/md';
 
-import './Visual.css';
+import '../styles/Visual.css';
 import store from '../store';
 import * as actions from '../actions/index';
 

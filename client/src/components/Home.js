@@ -8,7 +8,7 @@ import { TiWeatherDownpour as Rain } from 'react-icons/lib/ti';
 import { TiWeatherNight as Night } from 'react-icons/lib/ti';
 import { MdCloud as Cloud } from 'react-icons/lib/md';
 
-import './Home.css';
+import '../styles/Home.css';
 
 moment.locale('en');
 

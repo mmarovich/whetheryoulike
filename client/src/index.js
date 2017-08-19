@@ -10,7 +10,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import store, { history } from './store';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import './index.css';
+import './styles/index.css';
 injectTapEventPlugin();
 
 ReactDOM.render(

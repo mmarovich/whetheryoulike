@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 
-import './WebcamList.css';
+import '../styles/WebcamList.css';
 import store from '../store';
 import * as actions from '../actions/index';
 
