@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Popover from 'material-ui/Popover/Popover';
 import {Menu, MenuItem} from 'material-ui/Menu';
 import TiThMenu from 'react-icons/lib/ti/th-menu'
 
 
 import '../styles/Nav.css';
+import store from '../store';
+import * as actions from '../actions/index';
 
 class Nav extends Component {
     constructor(props) {
         super(props);
+
+        this.logOut = this.logOut.bind(this)
 
         this.state = {
             open: false,
@@ -22,6 +27,10 @@ class Nav extends Component {
                 vertical: 'top',
             },
         };
+    }
+
+    logOut() {
+        return store.dispatch(actions.logOut())
     }
 
     handleTouchTap = (event) => {
@@ -57,6 +66,7 @@ class Nav extends Component {
                         <MenuItem onTouchTap={this.handleRequestClose}><Link to="/yourwhether">Change Positions</Link></MenuItem>
                         <MenuItem onTouchTap={this.handleRequestClose}><Link to="/home">Preview</Link></MenuItem>
                         <MenuItem onTouchTap={this.handleRequestClose}><Link to="/about">About</Link></MenuItem>
+                        <MenuItem onTouchTap={this.handleRequestClose} onClick={this.logOut}><Link to="/login">Log Out</Link></MenuItem>
                     </Menu>
                 </Popover>
             </div>
@@ -64,4 +74,8 @@ class Nav extends Component {
     }
 }
 
-export default Nav;
+const mapStateToProps = (state, props) => ({
+    
+})
+
+export default connect(mapStateToProps)(Nav);

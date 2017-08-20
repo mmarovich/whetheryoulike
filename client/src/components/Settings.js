@@ -53,7 +53,6 @@ const styles = {
         color: 'black'
     },
     backgroundIcon: {
-        color: 'black',
         fill: 'black'
     }
 };
@@ -310,16 +309,14 @@ class Settings extends Component {
     render() {
         return (
             <div className="settings">
+                {this.enterLocation()}
                 <form className="submitlocation" onSubmit={this.onSubmit}>
-                    <label htmlFor="enterlocation">Location </label>
                     <input id="enterlocation" type="text" name="location"
-                        onChange={this.locationFieldChange} value={this.state.locationField} /><br />
+                        onChange={this.locationFieldChange} value={this.state.locationField} />
+                        <button className="enter-location-button" type="submit" value="Submit">Change Location</button>
                     {!this.props.settings.validLocation ? <span>Please enter a valid location</span> : <span></span>}
                     {!this.props.settings.validLocation ? <br /> : null}
-                    <button className="enter-location-button" type="submit" value="Submit">Change Location</button>
                 </form>
-                {this.enterLocation()}
-                {this.saveSettingsButton()}
                 <div className="options-container">
                     <div className="left-side">
                         <div className="weatherSettings">
@@ -615,6 +612,7 @@ class Settings extends Component {
                         </div>
                     </div>
                 </div>
+                {this.saveSettingsButton()}
             </div>
         )
     }

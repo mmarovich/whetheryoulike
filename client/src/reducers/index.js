@@ -152,6 +152,11 @@ export const userReducer = (state = initialState, action) => {
                 isLoggedIn: true,
                 email: action.email,
             }
+        case actions.LOG_OUT:
+            return {
+                isLoggedIn: false,
+                settings: {}
+            }
         case actions.UPDATE_STATE:
             return {
                 user: action.props
