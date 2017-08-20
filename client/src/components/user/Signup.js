@@ -43,7 +43,10 @@ class SignUp extends Component {
             })
             .then(data => {
                 if (!data.msg) {
-                    this.props.history.push('/login')
+                    this.setState({ msg: `You've successfully created an account. Redirecting to login page...`})
+                    setTimeout(() => {
+                        this.props.history.push('/login')
+                    }, 3000)
                 } else {
                     return;
                 }
