@@ -16,7 +16,8 @@ class SignUp extends Component {
         this.state = {
             email: '',
             password: '',
-            msg: ''
+            msg: '',
+            success: ''
         }
     }
 
@@ -43,7 +44,7 @@ class SignUp extends Component {
             })
             .then(data => {
                 if (!data.msg) {
-                    this.setState({ msg: `You've successfully created an account. Redirecting to login page...`})
+                    this.setState({ success: `You've successfully created an account. Redirecting to login page...`})
                     setTimeout(() => {
                         this.props.history.push('/login')
                     }, 3000)
@@ -122,6 +123,7 @@ class SignUp extends Component {
                         <input id="password" type="password" name="password"
                             onChange={this.passwordChange} value={this.state.password} required /><br />
                         <div className="message">{this.state.msg}</div>
+                        <div className="success">{this.state.success}</div>
                         <button className="signup-button" type="submit" value="Submit">Sign Up</button>
                     </form>
                     <p>Already have an account? <Link to="/login">Log in here</Link></p>
