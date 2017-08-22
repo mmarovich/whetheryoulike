@@ -1,7 +1,7 @@
 # WhetherYouLike
 #### your weather or not, however you like
 
-[Live Demo](https://rocky-escarpment-61736.herokuapp.com/)
+[Live Demo](https://whetheryoulike.herokuapp.com/)
 Be sure to go into the developer console and switch into mobile view.
 
 ## About
