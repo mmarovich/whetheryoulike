@@ -114,6 +114,9 @@ class Settings extends Component {
             .then(response => response.json())
             .then(user => {
                 this.setState({ msg: 'Your settings have been saved'})
+                setTimeout(() => {
+                    this.setState({msg: ''})
+                }, 3000)
                 return store.dispatch(actions.saveSettings(user.settings))
             })
             .catch(error => console.log(error))

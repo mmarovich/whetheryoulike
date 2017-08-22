@@ -102,6 +102,9 @@ class YourWhether extends Component {
             .then(user => {
                 console.log('saved')
                 this.setState({ msg: 'Positions Saved'})
+                setTimeout(() => {
+                    this.setState({msg: ''})
+                }, 3000)
                 return store.dispatch(actions.saveSettings(user.settings))
             })
             .catch(error => console.log(error))
@@ -128,7 +131,6 @@ class YourWhether extends Component {
             <div className="yourWhether-container">
                 <div className="yourWhether" style={{ backgroundColor: this.props.settings.background.color }}>
                     {this.displayWhether()}
-                    {this.displaySaved()}
                     <Time />
                     <Date />
                     <Visual />
@@ -137,6 +139,7 @@ class YourWhether extends Component {
                     <Webcam />
                     <Temperature />
                 </div>
+                {this.displaySaved()}
                 {this.savePositionsButton()}
             </div>
         )
