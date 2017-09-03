@@ -9,6 +9,7 @@ import * as actions from '../actions/index';
 import '../styles/Settings.css';
 import WeatherSettings from './settings/WeatherSettings';
 import TimeSettings from './settings/TimeSettings';
+import DateSettings from './settings/DateSettings'
 
 const styles = {
     icon: {
@@ -69,8 +70,6 @@ class Settings extends Component {
         this.getWhether = this.getWhether.bind(this);
         this.enterLocation = this.enterLocation.bind(this);
         this.isValidLocation = this.isValidLocation.bind(this);
-        this.toggleDate = this.toggleDate.bind(this);
-        this.toggleNumerical = this.toggleNumerical.bind(this);
         this.backgroundHandler = this.backgroundHandler.bind(this);
         this.foregroundHandler = this.foregroundHandler.bind(this);
         this.toggleApplyVisual = this.toggleApplyVisual.bind(this);
@@ -140,18 +139,6 @@ class Settings extends Component {
 
     toggleApplyVisual(e, applyVisual) {
         return store.dispatch(actions.applyVisual(applyVisual))
-    }
-
-    toggleNumerical(e, isInputChecked) {
-        if (!isInputChecked) {
-            return store.dispatch(actions.showNumerical(isInputChecked, 'MMMM Do, ', 'YYYY'))
-        } else {
-            return store.dispatch(actions.showNumerical(isInputChecked, 'M/D/', 'YYYY'))
-        }
-    }
-
-    toggleDate(e, isInputChecked) {
-        return store.dispatch(actions.showDate(isInputChecked))
     }
 
     isValidLocation(data) {
@@ -239,32 +226,8 @@ class Settings extends Component {
                     </div>
                     <div className="right-side">
                         <h3>Time & Date</h3>
-                        <div className="timeSettings">
                             <TimeSettings />
-                        </div>
-                        <div className="dateSettings">
-                            <div className="option-container">
-                                <Toggle
-                                    label="Date"
-                                    style={styles.toggle}
-                                    labelStyle={styles.labelStyle}
-                                    defaultToggled={this.props.settings.date.isInputChecked}
-                                    onToggle={this.toggleDate}
-                                    disabled={false}
-                                />
-                            </div>
-                            <div className="option-container">
-                                <Toggle
-                                    label="Numerical"
-                                    style={styles.toggleSub}
-                                    labelStyle={styles.labelStyle}
-                                    labelPosition='right'
-                                    defaultToggled={this.props.settings.date.numerical.isInputChecked}
-                                    onToggle={this.toggleNumerical}
-                                    disabled={this.props.settings.date.isInputChecked ? false : true}
-                                />
-                            </div>
-                        </div>
+                            <DateSettings />
                         <div className="colorSettings">
                             <h3>Color & Themes</h3>
                             <div className="backgroundSettings">

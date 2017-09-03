@@ -15,69 +15,25 @@ module.exports = function (app, passport, nev) {
     });
 
 
-    app.get('/api/email-verification/:URL', function (req, res) {
-        console.log("Email VERIFICATION route")
-        console.log(req.params)
-        var url = req.params.URL;
+    // app.get('/api/email-verification/:URL', function (req, res) {
+    //     console.log("Email VERIFICATION route")
+    //     console.log(req.params)
+    //     var url = req.params.URL;
 
-        nev.confirmTempUser(url, function (err, user) {
-            if (user) {
-                nev.sendConfirmationEmail(user.email, function (err, info) {
-                    if (err) {
-                        return res.status(404).send('ERROR: sending confirmation email FAILED');
-                    }
-                    res.send('Your email has been confirmed! Thank you! <a href="http://localhost:3000/login">Click here to log in!</a>')
-                });
-            } else {
-                return res.status(404).send('ERROR: confirming temp user FAILED');
-            }
-        });
-    });
-
-    // app.post('/api/signup', function (req, res) {
-    //     const username = req.body.username
-    //     const email = req.body.email;
-    //     const pw = req.body.password;
-    //     const newUser = new User({
-    //         username: username,
-    //         email: email,
-    //         password: pw
-    //     });
-
-    //     nev.createTempUser(newUser, (err, existingPersistentUser, newTempUser) => {
-
-    //         if (err) {
-    //             return res.status(404).send(`ERROR: creating temp user FAILED ${err}`);
-    //         }
-
-    //         if (existingPersistentUser) {
-    //             return res.json({
-    //                 msg: `You have already signed up and confirmed your account. Did you forget your password?`
-    //             });
-    //         }
-
-    //         if (newTempUser) {
-    //             var URL = newTempUser[nev.options.URLFieldName];
-
-    //             nev.sendVerificationEmail(email, URL, function (err, info) {
-    //                 console.log(info)
+    //     nev.confirmTempUser(url, function (err, user) {
+    //         if (user) {
+    //             nev.sendConfirmationEmail(user.email, function (err, info) {
     //                 if (err) {
-    //                     console.error(err);
-    //                     return res.status(500).send(`ERROR: sending verification email FAILED ${err}`);
+    //                     return res.status(404).send('ERROR: sending confirmation email FAILED');
     //                 }
-    //                 res.json({
-    //                     email: info.accepted[0],
-    //                     status: 'uncomfirmed'
-    //                 });
+    //                 res.send('Your email has been confirmed! Thank you! <a href="http://localhost:3000/login">Click here to log in!</a>')
     //             });
-
     //         } else {
-    //             res.json({
-    //                 msg: 'You have already signed up. Please check your email to verify your account.'
-    //             });
+    //             return res.status(404).send('ERROR: confirming temp user FAILED');
     //         }
-    //     })
-    // })
+    //     });
+    // });
+
 
     app.post('/api/signup', (req, res, next) => {
         User.findOne({ email: req.body.email }, (err, user) => {
@@ -128,7 +84,6 @@ module.exports = function (app, passport, nev) {
             if (err) {
                 res.status(400).send(err)
             } else {
-                console.log(user)
                 user[0].settings = req.body.settings
 
                 user[0].save((err, user) => {
