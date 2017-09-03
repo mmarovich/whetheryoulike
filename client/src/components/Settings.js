@@ -8,6 +8,7 @@ import store from '../store';
 import * as actions from '../actions/index';
 import '../styles/Settings.css';
 import WeatherSettings from './settings/WeatherSettings';
+import TimeSettings from './settings/TimeSettings';
 
 const styles = {
     icon: {
@@ -68,11 +69,7 @@ class Settings extends Component {
         this.getWhether = this.getWhether.bind(this);
         this.enterLocation = this.enterLocation.bind(this);
         this.isValidLocation = this.isValidLocation.bind(this);
-        this.toggleTime = this.toggleTime.bind(this);
         this.toggleDate = this.toggleDate.bind(this);
-        this.toggleSeconds = this.toggleSeconds.bind(this);
-        this.toggleTwelve = this.toggleTwelve.bind(this);
-        this.toggleMeridiem = this.toggleMeridiem.bind(this);
         this.toggleNumerical = this.toggleNumerical.bind(this);
         this.backgroundHandler = this.backgroundHandler.bind(this);
         this.foregroundHandler = this.foregroundHandler.bind(this);
@@ -153,37 +150,8 @@ class Settings extends Component {
         }
     }
 
-    toggleMeridiem(e, isInputChecked) {
-        if (!isInputChecked) {
-            return store.dispatch(actions.showMeridiem(isInputChecked, ''))
-        } else {
-            return store.dispatch(actions.showMeridiem(isInputChecked, ' A'))
-        }
-    }
-
-    toggleTwelve(e, isInputChecked) {
-        if (!isInputChecked) {
-            this.toggleMeridiem(e, isInputChecked)
-            return store.dispatch(actions.showTwelve(isInputChecked, 'HH'))
-        } else {
-            return store.dispatch(actions.showTwelve(isInputChecked, 'h:'))
-        }
-    }
-
-    toggleSeconds(e, isInputChecked) {
-        if (!isInputChecked) {
-            return store.dispatch(actions.showSeconds(isInputChecked, ''))
-        } else {
-            return store.dispatch(actions.showSeconds(isInputChecked, ':ss'))
-        }
-    }
-
     toggleDate(e, isInputChecked) {
         return store.dispatch(actions.showDate(isInputChecked))
-    }
-
-    toggleTime(e, isInputChecked) {
-        return store.dispatch(actions.showTime(isInputChecked))
     }
 
     isValidLocation(data) {
@@ -272,49 +240,7 @@ class Settings extends Component {
                     <div className="right-side">
                         <h3>Time & Date</h3>
                         <div className="timeSettings">
-                            <div className="option-container">
-                                <Toggle
-                                    label="Time"
-                                    style={styles.toggle}
-                                    labelStyle={styles.labelStyle}
-                                    defaultToggled={this.props.settings.time.isInputChecked}
-                                    onToggle={this.toggleTime}
-                                    disabled={false}
-                                />
-                            </div>
-                            <div className="option-container">
-                                <Toggle
-                                    label="12-hour"
-                                    style={styles.toggleSub}
-                                    labelStyle={styles.labelStyle}
-                                    labelPosition='right'
-                                    defaultToggled={this.props.settings.time.twelve.isInputChecked}
-                                    onToggle={this.toggleTwelve}
-                                    disabled={this.props.settings.time.isInputChecked ? false : true}
-                                />
-                            </div>
-                            <div className="option-container">
-                                <Toggle
-                                    label="seconds"
-                                    style={styles.toggleSub}
-                                    labelStyle={styles.labelStyle}
-                                    labelPosition='right'
-                                    defaultToggled={this.props.settings.time.seconds.isInputChecked}
-                                    onToggle={this.toggleSeconds}
-                                    disabled={this.props.settings.time.isInputChecked ? false : true}
-                                />
-                            </div>
-                            <div className="option-container">
-                                <Toggle
-                                    label="AM/PM"
-                                    style={styles.toggleSub}
-                                    labelStyle={styles.labelStyle}
-                                    labelPosition='right'
-                                    defaultToggled={this.props.settings.time.meridiem.isInputChecked}
-                                    onToggle={this.toggleMeridiem}
-                                    disabled={this.props.settings.time.isInputChecked && this.props.settings.time.twelve.isInputChecked ? false : true}
-                                />
-                            </div>
+                            <TimeSettings />
                         </div>
                         <div className="dateSettings">
                             <div className="option-container">
