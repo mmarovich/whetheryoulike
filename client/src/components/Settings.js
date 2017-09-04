@@ -9,7 +9,8 @@ import * as actions from '../actions/index';
 import '../styles/Settings.css';
 import WeatherSettings from './settings/WeatherSettings';
 import TimeSettings from './settings/TimeSettings';
-import DateSettings from './settings/DateSettings'
+import DateSettings from './settings/DateSettings';
+import BackgroundSettings from './settings/BackgroundSettings';
 
 const styles = {
     icon: {
@@ -232,61 +233,7 @@ class Settings extends Component {
                             <h3>Color & Themes</h3>
                             <div className="backgroundSettings">
                                 <h4>Background</h4>
-                                <div className="option-container">
-                                    <RadioButtonGroup
-                                        onChange={this.backgroundHandler}
-                                        className="background-radioButtons"
-                                        name="background"
-                                        defaultSelected={this.props.settings.background.color}
-                                        children={[
-                                            <RadioButton
-                                                className="radio-button"
-                                                value="black"
-                                                label="Black"
-                                                style={styles.backgroundButton}
-                                                labelStyle={styles.backgroundLabel}
-                                                iconStyle={styles.backgroundIcon}
-                                                labelPosition="left"
-                                            />,
-                                            <RadioButton
-                                                className="radio-button"
-                                                value="gray"
-                                                label="Gray"
-                                                style={styles.backgroundButton}
-                                                labelStyle={styles.backgroundLabel}
-                                                iconStyle={styles.backgroundIcon}
-                                                labelPosition="left"
-                                            />,
-                                            <RadioButton
-                                                className="radio-button"
-                                                value="navy"
-                                                label="Navy"
-                                                style={styles.backgroundButton}
-                                                labelStyle={styles.backgroundLabel}
-                                                iconStyle={styles.backgroundIcon}
-                                                labelPosition="left"
-                                            />,
-                                            <RadioButton
-                                                className="radio-button"
-                                                value="maroon"
-                                                label="Maroon"
-                                                style={styles.backgroundButton}
-                                                labelStyle={styles.backgroundLabel}
-                                                iconStyle={styles.backgroundIcon}
-                                                labelPosition="left"
-                                            />,
-                                            <RadioButton
-                                                className="radio-button"
-                                                value="teal"
-                                                label="Teal"
-                                                style={styles.backgroundButton}
-                                                labelStyle={styles.backgroundLabel}
-                                                iconStyle={styles.backgroundIcon}
-                                                labelPosition="left"
-                                            />
-                                        ]}
-                                    />
-                                </div>
+                                    <BackgroundSettings />
                                 <h4>Foreground</h4>
                                 <div className="option-container">
                                     <RadioButtonGroup
