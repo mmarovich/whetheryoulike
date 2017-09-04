@@ -11,55 +11,7 @@ import WeatherSettings from './settings/WeatherSettings';
 import TimeSettings from './settings/TimeSettings';
 import DateSettings from './settings/DateSettings';
 import BackgroundSettings from './settings/BackgroundSettings';
-
-const styles = {
-    icon: {
-        color: 'lightblue',
-        width: '10%',
-        effect: 'solid'
-    },
-    block: {
-        width: '50%',
-        margin: '10px'
-    },
-    toggle: {
-        marginBottom: '8px',
-        width: '100%',
-        display: 'inline-block'
-    },
-    toggleSub: {
-        width: '90%',
-        display: 'inline-block',
-        paddingLeft: '20px',
-        fontSize: '15px'
-    },
-    thumbOff: {
-        backgroundColor: '#ffcccc',
-    },
-    trackOff: {
-        backgroundColor: '#ff9d9d',
-    },
-    thumbSwitched: {
-        backgroundColor: 'red',
-    },
-    trackSwitched: {
-        backgroundColor: '#ff9d9d',
-    },
-    labelStyle: {
-        color: 'black',
-        width: '50%'
-    },
-    backgroundButton: {
-        marginBottom: '2px',
-        width: '50%'
-    },
-    backgroundLabel: {
-        color: 'black'
-    },
-    backgroundIcon: {
-        fill: 'black'
-    }
-};
+import ForegroundSettings from './settings/ForegroundSettings';
 
 class Settings extends Component {
     constructor(props) {
@@ -71,9 +23,6 @@ class Settings extends Component {
         this.getWhether = this.getWhether.bind(this);
         this.enterLocation = this.enterLocation.bind(this);
         this.isValidLocation = this.isValidLocation.bind(this);
-        this.backgroundHandler = this.backgroundHandler.bind(this);
-        this.foregroundHandler = this.foregroundHandler.bind(this);
-        this.toggleApplyVisual = this.toggleApplyVisual.bind(this);
         this.saveSettingsButton = this.saveSettingsButton.bind(this)
         this.saveSettings = this.saveSettings.bind(this)
         
@@ -128,18 +77,6 @@ class Settings extends Component {
                 <p className="saved-settings">{this.state.msg}</p>
                 </div>
         }
-    }
-
-    foregroundHandler(e, value) {
-        return store.dispatch(actions.foregroundChoice(value))
-    }
-
-    backgroundHandler(e, value) {
-        return store.dispatch(actions.backgroundChoice(value))
-    }
-
-    toggleApplyVisual(e, applyVisual) {
-        return store.dispatch(actions.applyVisual(applyVisual))
     }
 
     isValidLocation(data) {
@@ -233,71 +170,9 @@ class Settings extends Component {
                             <h3>Color & Themes</h3>
                             <div className="backgroundSettings">
                                 <h4>Background</h4>
-                                    <BackgroundSettings />
+                                <BackgroundSettings />
                                 <h4>Foreground</h4>
-                                <div className="option-container">
-                                    <RadioButtonGroup
-                                        onChange={this.foregroundHandler}
-                                        className="foreground-radioButtons"
-                                        name="foreground"
-                                        defaultSelected={this.props.settings.foreground.color}
-                                        children={[
-                                            <RadioButton
-                                                className="radio-button"
-                                                value="rgba(0,255,255, 1)"
-                                                label="Aqua"
-                                                style={styles.backgroundButton}
-                                                labelStyle={styles.backgroundLabel}
-                                                iconStyle={styles.backgroundIcon}
-                                                labelPosition="left"
-                                            />,
-                                            <RadioButton
-                                                className="radio-button"
-                                                value="rgba(0,255,0,1)"
-                                                label="Lime"
-                                                style={styles.backgroundButton}
-                                                labelStyle={styles.backgroundLabel}
-                                                iconStyle={styles.backgroundIcon}
-                                                labelPosition="left"
-                                            />,
-                                            <RadioButton
-                                                className="radio-button"
-                                                value="rgba(255,0,255,1)"
-                                                label="Fuchsia"
-                                                style={styles.backgroundButton}
-                                                labelStyle={styles.backgroundLabel}
-                                                iconStyle={styles.backgroundIcon}
-                                                labelPosition="left"
-                                            />,
-                                            <RadioButton
-                                                className="radio-button"
-                                                value="rgba(255,255,0,1)"
-                                                label="Yellow"
-                                                style={styles.backgroundButton}
-                                                labelStyle={styles.backgroundLabel}
-                                                iconStyle={styles.backgroundIcon}
-                                                labelPosition="left"
-                                            />,
-                                            <RadioButton
-                                                className="radio-button"
-                                                value="rgba(255,255,255,1)"
-                                                label="White"
-                                                style={styles.backgroundButton}
-                                                labelStyle={styles.backgroundLabel}
-                                                iconStyle={styles.backgroundIcon}
-                                                labelPosition="left"
-                                            />
-                                        ]}
-                                    />
-                                    <Toggle
-                                        label="Apply Visual"
-                                        style={styles.toggle}
-                                        labelStyle={styles.labelStyle}
-                                        defaultToggled={this.props.settings.foreground.applyVisual}
-                                        onToggle={this.toggleApplyVisual}
-                                        disabled={false}
-                                    />
-                                </div>
+                                <ForegroundSettings />
                             </div>
                         </div>
                     </div>
